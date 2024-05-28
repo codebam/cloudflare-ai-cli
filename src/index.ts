@@ -5,12 +5,13 @@ export interface Env {
 export default {
 	async fetch(request: Request, env: Env) {
 		const content = new URL(request.url).searchParams.get('content');
+		const system = new URL(request.url).searchParams.get('system');
 
 		const messages = [
-			{ role: 'system', content: 'You are a friendly assistant' },
+			{ role: 'system', content: system ?? '' },
 			{
 				role: 'user',
-				content,
+				content: content ?? '',
 			},
 		];
 
@@ -19,8 +20,8 @@ export default {
 			stream: true,
 		});
 
-		return new Response(stream, {
-			headers: { 'content-type': 'text/event-stream' },
+		return new Response(stream as BodyInit, {
+			headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/event-stream' },
 		});
 	},
 };
