@@ -16,7 +16,7 @@ export default {
 			},
 		];
 
-		const stream = await env.AI.run((model as '@cf/meta/llama-3-8b-instruct') ?? '@cf/meta/llama-3-8b-instruct', {
+		const stream = await env.AI.run((model as '@cf/meta/llama-3.1-8b-instruct') ?? '@cf/meta/llama-3.1-8b-instruct', {
 			messages,
 			stream: true,
 		});
