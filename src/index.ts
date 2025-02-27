@@ -22,7 +22,7 @@ export default {
 		});
 
 		return new Response(stream as BodyInit, {
-			headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/event-stream' },
+			headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*', 'Content-Type': 'text/event-stream' },
 		});
 	},
 };
